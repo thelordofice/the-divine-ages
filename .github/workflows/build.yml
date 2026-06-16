@@ -1,0 +1,54 @@
+name: Build Medieval RPG
+
+on: [push]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: windows-2022
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        lfs: true
+
+    - name: Check for Unreal Engine
+      shell: cmd
+      run: |
+        echo "Checking if Unreal Engine is pre-installed..."
+        if exist "C:\Program Files\Epic Games\UE_5.3" (
+            echo "SUCCESS: Unreal Engine found!"
+        ) else (
+            echo "ERROR: Unreal Engine is NOT installed on this GitHub runner."
+            echo "This is why the 'Build' step finds no files."
+        )
+
+    - name: Create Build Directory
+      shell: cmd
+      run: |
+        if not exist "BuildOutput" mkdir "BuildOutput"
+        echo "Placeholder file to prevent upload error" > BuildOutput\build_log.txt
+
+    - name: Build Project
+      shell: cmd
+      run: |
+        echo "Attempting to run Unreal Build Tool..."
+        :: This command will only work if Unreal is installed
+        "C:\Program Files\Epic Games\UE_5.3\Engine\Build\BatchFiles\RunUAT.bat" BuildCook ^
+        -project="%GITHUB_WORKSPACE%\MedievalRPG.uproject" ^
+        -platform=Win64 -clientconfig=Shipping -build -stage -pak -archive ^
+        -archivedirectory="%GITHUB_WORKSPACE%\BuildOutput"
+
+    - name: List Files
+      shell: cmd
+      run: dir /s "%GITHUB_WORKSPACE%\BuildOutput"
+
+    - name: Upload .EXE Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MedievalRPG-Windows-Build
+        path: BuildOutput/
+        retention-days: 30
