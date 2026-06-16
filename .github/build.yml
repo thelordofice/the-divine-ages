@@ -1,0 +1,32 @@
+name: Build Medieval RPG
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-2022
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4  # Updated to v4
+      with:
+        lfs: true
+    
+    - name: Download Unreal Engine 5.3
+      run: |
+        echo "Downloading Unreal Engine 5.3..."
+        # (Your download command here)
+    
+    - name: Build Project
+      run: |
+        echo "Building Medieval RPG..."
+        # (Your build command here)
+    
+    - name: Upload .EXE Artifact
+      uses: actions/upload-artifact@v4  # Updated to v4
+      with:
+        name: MedievalRPG-Executable
+        path: Build/
+        retention-days: 30
+        
+
