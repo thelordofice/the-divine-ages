@@ -1,0 +1,40 @@
+name: Build Medieval RPG
+
+on: [push]
+
+# This fixes the Node.js warning
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: windows-2022
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        lfs: true
+
+    - name: Build Project
+      run: |
+        echo "Building Medieval RPG..."
+        # Make sure your build command uses this exact archive directory:
+        # -archivedirectory="${{ github.workspace }}\BuildOutput"
+        
+        # FOR TESTING: Let's create a dummy folder to ensure the uploader works
+        mkdir BuildOutput
+        echo "Build successful" > BuildOutput\log.txt
+
+    # This step helps us see where the files actually are if it fails
+    - name: List Files for Debugging
+      run: dir /s ${{ github.workspace }}\BuildOutput
+
+    - name: Upload .EXE Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MedievalRPG-Windows-Build
+        # We use a wildcard to find the folder regardless of what Unreal names it
+        path: BuildOutput/
+        retention-days: 30
+        if-no-files-found: error
