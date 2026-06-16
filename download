@@ -1,0 +1,31 @@
+# Unreal Engine
+Binaries/
+Intermediate/
+Saved/
+Plugins/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.sln.DotSettings
+DerivedDataCache/
+
+# IDE
+.vs/
+.vscode/
+*.code-workspace
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Build
+Build/
+*.obj
+*.asm
+
+# Misc
+*.log
+.env.local
