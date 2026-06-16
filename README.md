@@ -1,11 +1,11 @@
 [README.md](https://github.com/user-attachments/files/29000900/README.md)
 # Medieval RPG - Unreal Engine 5
 
-## 🎮 Project Overview
+## Project Overview
 
 A comprehensive, production-ready **immersive 3D Medieval RPG** for Unreal Engine 5 with **50+ hours of content**. This is a complete foundation for a AAA-quality role-playing game featuring expansive world exploration, deep combat systems, magic, crafting, NPCs, quests, and extensive progression mechanics.
 
-## 🌟 Core Features
+##  Core Features
 
 ### Gameplay Systems
 
@@ -69,7 +69,7 @@ A comprehensive, production-ready **immersive 3D Medieval RPG** for Unreal Engin
 - **VFX Library**: Spell effects, combat reactions, environmental hazards
 - **UI System**: Complete menus, HUD, inventory, character sheet, minimap
 
-## 📋 Prerequisites
+##  Prerequisites
 
 ### Software Requirements
 - **Unreal Engine 5.3 or higher** (Download from Epic Games Launcher)
@@ -83,15 +83,5 @@ A comprehensive, production-ready **immersive 3D Medieval RPG** for Unreal Engin
 - **RAM**: 16GB minimum (32GB recommended)
 - **Storage**: 150GB SSD free space (for engine + project + compiled binaries)
 
-## 🚀 Installation & Setup
 
-### Step 1: Install Unreal Engine 5.3+
-
-1. Download **Epic Games Launcher** from https://www.epicgames.com
-2. Install Epic Games Launcher
-3. Open Epic Games Launcher and navigate to **Unreal Engine** → **Library**
-4. Click **Install Engine** and select version **5.3** or higher
-5. Wait for installation to complete (approximately 90GB)
-
-### Step 2: Clone the Project
 
